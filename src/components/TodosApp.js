@@ -1,14 +1,10 @@
-import React, { useState} from "react";
-import axios from "axios";
-import { useEffect } from "react";
+import React, { useEffect, useState} from "react";
 
-export default function TodosApp ({todos,addTodo,setTodos}){
+export default function TodosApp ({todos,addTodo, fetchTodos}){
     const [text,setText] = useState("")
 
     useEffect(()=>{
-        axios.get("https://jsonplaceholder.typicode.com/todos").then(res=>{
-            setTodos(res.data)
-        })
+        fetchTodos();
     },[])
 
     console.log("todos");
