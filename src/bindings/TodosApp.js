@@ -1,5 +1,4 @@
 import { connect } from "react-redux";
-import axios from "axios";
 
 import TodosApp from "../components/TodosApp";
 import { addTodo,setTodos,fetchTodos } from "../redux/todos";
