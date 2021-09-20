@@ -1,3 +1,5 @@
+import axios from "axios";
+
 const initialState = {
     items : []
 }
@@ -14,6 +16,11 @@ export const setTodos = (todos) =>({
     type: SET_TODOS,
     payload: todos
 })
+
+export const fetchTodos = ()=> async (dispatch)=> {
+    const rest = await axios.get("https://jsonplaceholder.typicode.com/todos");
+    dispatch(setTodos(rest.data))
+}
 
 const reducer = (state = initialState , action)=> {
     switch (action.type){
