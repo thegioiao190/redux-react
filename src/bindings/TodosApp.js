@@ -1,14 +1,15 @@
 import { connect } from "react-redux";
 
 import TodosApp from "../components/TodosApp";
-import { addTodo } from "../redux/todos";
+import { addTodo,setTodos } from "../redux/todos";
 
 const mapStateToProps = (state)=>({
     todos: state.todo.items
 })
 
 const mapActionToProps = {
-    addTodo
+    addTodo,
+    setTodos
 }
 
 

@@ -1,7 +1,15 @@
 import React, { useState} from "react";
+import axios from "axios";
+import { useEffect } from "react";
 
-export default function TodosApp ({todos,addTodo}){
+export default function TodosApp ({todos,addTodo,setTodos}){
     const [text,setText] = useState("")
+
+    useEffect(()=>{
+        axios.get("https://jsonplaceholder.typicode.com/todos").then(res=>{
+            setTodos(res.data)
+        })
+    },[])
 
     console.log("todos");
     return (
@@ -15,7 +23,7 @@ export default function TodosApp ({todos,addTodo}){
             <ol>
                 {
                     todos.map(
-                        todo=><li>{todo}</li>
+                        todo=><li key={todo.id} >{todo.title}</li>
                     )
                 }
             </ol>
